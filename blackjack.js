@@ -5,6 +5,14 @@ class Card{
   }
 }
 
+class Player{
+  constructor(name){
+    this.name = name;
+    this.hand = [];
+  }
+}
+
+//deck construction + shuffle
 function getDeck(){
   var deck = [];
   var suits =["hearts", "diamonds", "clubs", "spades"];
@@ -30,6 +38,19 @@ function shuffleDeck(deck){
   return deck;
 }
 
+//card dealing out stuff
+function cardDeal(deck, player){
+  //take a card from the top of the deck (there is one less card in the deck)
+  var holdCard = deck.splice(0, 1)[0];
+  //that card is passed to the player (the player has one card in their hand)
+  player.hand.push(holdCard);
+}
+
+
 var deck = getDeck();
 deck = shuffleDeck(deck);
-console.log(deck.length);
+var Tiffany = new Player(Tiffany);
+cardDeal(deck, Tiffany);
+console.log(Tiffany.hand);
+cardDeal(deck, Tiffany);
+console.log(Tiffany.hand);
