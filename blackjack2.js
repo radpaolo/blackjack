@@ -143,26 +143,34 @@ cardDeal(deck, tiffany);
 cardDeal(deck, tiffany);
 cardDeal(deck, dealer);
 cardDeal(deck, dealer);
-//start Player loop here
+//start Player loop here THIS NEEDS TO GO UNTIL PLAYER SAYS NO THEN GO TO DEALER PLAYS CODE
 while (){
 //spit out current hand
 console.log(tiffany.hand);
 //spit out the check sum
 console.log("You have " + checkSum(tiffany.hand));
-
+//in order to start up the player hit/stay gameplay loop
+//var firsthand is the check sum of the current hand
 var firstHand = checkSum(tiffany.hand);
+// if else statement of the sum of the current hand, if equal to 21 prints you win
 if (firstHand === 21){
   console.log("You win!");
+  //return tells program to run it back to the beginning kill this code
   return;
+  //else if statement if the hand is less than 21
 } else if (firstHand < 21) {
+  //this prompt question into it's own if/else
   prompt.question("Would you like to hit?", function (playerAnswer) {
+    //if player answer is yes
     if (playerAnswer === "yes") {
+      //fire the carddeal function into the deck
       cardDeal(deck, tiffany);
+      //
       console.log(tiffany.hand);
       console.log("You have " + checkSum(tiffany.hand));
-    }
+    } else (playerAnswer === "no") {}
   })
-
+//if the hand is over 21, prints you lose and tells the code to kill and return to start
 } else if (firstHand > 21) {
   console.log("You busted, you lose!");
   return;
