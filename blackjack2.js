@@ -143,7 +143,10 @@ cardDeal(deck, tiffany);
 cardDeal(deck, tiffany);
 cardDeal(deck, dealer);
 cardDeal(deck, dealer);
+
 //start Player loop here THIS NEEDS TO GO UNTIL PLAYER SAYS NO THEN GO TO DEALER PLAYS CODE
+//The playerAnswer seems to be a local variable and outside of the global scope,
+//and can't have "playerAnswer === no" as the condition to let the Player while loop end?
 while (){
 //spit out current hand
 console.log(tiffany.hand);
@@ -151,14 +154,14 @@ console.log(tiffany.hand);
 console.log("You have " + checkSum(tiffany.hand));
 //in order to start up the player hit/stay gameplay loop
 //var firsthand is the check sum of the current hand
-var firstHand = checkSum(tiffany.hand);
+var playerHand = checkSum(tiffany.hand);
 // if else statement of the sum of the current hand, if equal to 21 prints you win
-if (firstHand === 21){
+if (playerHand === 21){
   console.log("You win!");
   //return tells program to run it back to the beginning kill this code
   return;
   //else if statement if the hand is less than 21
-} else if (firstHand < 21) {
+} else if (playerHand < 21) {
   //this prompt question into it's own if/else
   prompt.question("Would you like to hit?", function (playerAnswer) {
     //if player answer is yes
@@ -168,21 +171,80 @@ if (firstHand === 21){
       //
       console.log(tiffany.hand);
       console.log("You have " + checkSum(tiffany.hand));
-    } else (playerAnswer === "no") {}
+    } else if (playerAnswer === "no"){
+//not sure what to type from here to kill loop, move to Dealer?
+    } else {
+      console.log ("wait, what are you trying to do?");
+    }
   })
 //if the hand is over 21, prints you lose and tells the code to kill and return to start
-} else if (firstHand > 21) {
+} else if (playerHand > 21) {
   console.log("You busted, you lose!");
   return;
 }
 
+//Not sure if the doesBust function would still be relevant in this case if it's
+//just console printing the same "you lose" message when hand > 21 then returning?
 
+//Not sure if once the Player loop ends, it'll automatically go to DEALER PLAYS?
+
+//DEALER PLAYS
+console.log(dealer.hand);
+//spit out the check sum
+console.log("The Dealer has " + checkSum(tiffany.hand));
+var dealerHand = checkSum(dealer.hand);
+if (dealerHand === 21) {
+  console.log("The Dealer wins!");
+  return;
+} else if (dealerHand < 16) {
+  cardDeal(deck, dealer);
+    if (dealerHand > 21) {
+      console.log("The Dealer has " + dealer.hand);
+      console.log("The Dealer busts! You win!");
+      return;
+    } else (dealerHand < 21){
+      console.log("The Dealer has " + dealer.hand);
+    }
+  else if (dealerHand > 21){
+    console.log("The Dealer busts! You win!");
+    return;
+  }
+}
+//COMPARING SCORES
+console.log("You have " + playerHand " and The Dealer has " + dealerHand);
+if (dealerHand > playerHand){
+  console.log("The Dealer wins!");{
+    return;
+    else (playerHand > dealerHand){
+      console.log("You win!");
+      return;
+      else (playerhand === dealerHand){
+        console.log("You both tied!");
+        return;
+      }
+    }
+  }
+}
 
 }
+
+
+
+//THE DEALER HAS A SIMILAR GAMEPLAY LOOP BUT DOESN'T REQUIRE THE USER PROMPT
+//DEALER SUM OF dealerHand
+//STRAIGHT UP IF dealerHand === 21 wins
+//ELSE IF dealerHand < 17 cardDeal
+//ELSE IF dealerHand > 17 Stay
+//ELSE IF dealerHand > 21 Dealer loses, console.log("Dealer busts, you win!")
+//Return
 
 //console.log(dealer.hand);
 //console.log ("The Dealer has " + checkSum(dealer.hand));
 
+
+//IF DEALER === PLAYER SUM console.log("tie!"), return
+//IF DEALER > PLAYER SUM console.log ("dealer wins!"), return
+//IF PLAYER > DEALER SUM console.log ("you win!"), return
 
 }
 
