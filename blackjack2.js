@@ -147,7 +147,10 @@ cardDeal(deck, dealer);
 //start Player loop here THIS NEEDS TO GO UNTIL PLAYER SAYS NO THEN GO TO DEALER PLAYS CODE
 //The playerAnswer seems to be a local variable and outside of the global scope,
 //and can't have "playerAnswer === no" as the condition to let the Player while loop end?
-while (){
+
+var playerInput = "yes";
+
+while (playerInput === "yes"){
 //spit out current hand
 console.log(tiffany.hand);
 //spit out the check sum
@@ -164,9 +167,9 @@ if (playerHand === 21){
 } else if (playerHand < 21) {
   //this prompt question into it's own if/else
   prompt.question("Would you like to hit?", function (playerAnswer) {
-    //if player answer is yes
+    playerInput = playerAnswer;
     if (playerAnswer === "yes") {
-      //fire the carddeal function into the deck
+      //fire the cardDeal function into the deck
       cardDeal(deck, tiffany);
       //
       console.log(tiffany.hand);
@@ -176,7 +179,7 @@ if (playerHand === 21){
     } else {
       console.log ("wait, what are you trying to do?");
     }
-  })
+  });
 //if the hand is over 21, prints you lose and tells the code to kill and return to start
 } else if (playerHand > 21) {
   console.log("You busted, you lose!");
@@ -189,14 +192,18 @@ if (playerHand === 21){
 //Not sure if once the Player loop ends, it'll automatically go to DEALER PLAYS?
 
 //DEALER PLAYS
+//additional while loop for Dealer as well
+//conditional for the while loop to continue/stop?
+
+/* while (){
 console.log(dealer.hand);
 //spit out the check sum
-console.log("The Dealer has " + checkSum(tiffany.hand));
+console.log("The Dealer has " + checkSum(dealer.hand));
 var dealerHand = checkSum(dealer.hand);
 if (dealerHand === 21) {
   console.log("The Dealer wins!");
   return;
-} else if (dealerHand < 16) {
+} else if (dealerHand <= 16) {
   cardDeal(deck, dealer);
     if (dealerHand > 21) {
       console.log("The Dealer has " + dealer.hand);
@@ -204,12 +211,13 @@ if (dealerHand === 21) {
       return;
     } else (dealerHand < 21){
       console.log("The Dealer has " + dealer.hand);
-    }
-  else if (dealerHand > 21){
+    } else if (dealerHand > 21){
     console.log("The Dealer busts! You win!");
     return;
   }
 }
+}
+
 //COMPARING SCORES
 console.log("You have " + playerHand " and The Dealer has " + dealerHand);
 if (dealerHand > playerHand){
@@ -225,7 +233,7 @@ if (dealerHand > playerHand){
     }
   }
 }
-
+}
 }
 
 
@@ -245,7 +253,7 @@ if (dealerHand > playerHand){
 //IF DEALER === PLAYER SUM console.log("tie!"), return
 //IF DEALER > PLAYER SUM console.log ("dealer wins!"), return
 //IF PLAYER > DEALER SUM console.log ("you win!"), return
-
+*/
 }
 
 main();
