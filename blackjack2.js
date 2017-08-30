@@ -181,7 +181,7 @@ if (playerHand === 21){
     }
   });
 //if the hand is over 21, prints you lose and tells the code to kill and return to start
-} else if (playerHand > 21) {
+} else (playerHand > 21) {
   console.log("You busted, you lose!");
   return;
 }
@@ -195,7 +195,9 @@ if (playerHand === 21){
 //additional while loop for Dealer as well
 //conditional for the while loop to continue/stop?
 
-/* while (){
+/*
+var dealerResult = (dealerHand <= 16);
+while (dealerHand <= 16)){
 console.log(dealer.hand);
 //spit out the check sum
 console.log("The Dealer has " + checkSum(dealer.hand));
@@ -204,6 +206,7 @@ if (dealerHand === 21) {
   console.log("The Dealer wins!");
   return;
 } else if (dealerHand <= 16) {
+dealerResult = dealerHand;
   cardDeal(deck, dealer);
     if (dealerHand > 21) {
       console.log("The Dealer has " + dealer.hand);
@@ -211,7 +214,7 @@ if (dealerHand === 21) {
       return;
     } else (dealerHand < 21){
       console.log("The Dealer has " + dealer.hand);
-    } else if (dealerHand > 21){
+    } else (dealerHand > 21){
     console.log("The Dealer busts! You win!");
     return;
   }
