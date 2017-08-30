@@ -196,7 +196,6 @@ if (playerHand === 21){
 //conditional for the while loop to continue/stop?
 
 /*
-var dealerResult = (dealerHand <= 16);
 while (dealerHand <= 16)){
 console.log(dealer.hand);
 //spit out the check sum
@@ -206,7 +205,6 @@ if (dealerHand === 21) {
   console.log("The Dealer wins!");
   return;
 } else if (dealerHand <= 16) {
-dealerResult = dealerHand;
   cardDeal(deck, dealer);
     if (dealerHand > 21) {
       console.log("The Dealer has " + dealer.hand);
